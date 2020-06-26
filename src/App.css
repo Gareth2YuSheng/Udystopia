@@ -1,0 +1,13 @@
+/*ttf fonts*/
+@font-face {
+  font-family: "mohaveRegular";
+  src: url("./assets/fonts/mohave/mohave.regular.ttf");
+}
+
+.tabLabel {
+    font: normal 100% 'mohaveRegular';
+}
+
+.tabIcon {
+  color: rgb(255,51,102);
+}

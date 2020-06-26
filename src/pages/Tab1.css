@@ -1,0 +1,31 @@
+.main {
+    text-align: center;
+    /* margin: auto auto; */
+    /* border: 1px solid black; */
+    /* padding: 40% auto; */
+}
+
+#errortext {
+    /* position: absolute; */
+    margin-top: 30%;
+    font-size: 30px;
+}
+
+table {
+    width: 80%;
+    /* height: 100%; */
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+input #next {
+    /* background-color: skyblue; */
+    color: red;
+    /* height: 50px; */
+}

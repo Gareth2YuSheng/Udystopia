@@ -1,0 +1,7 @@
+{
+  "name": "Udystopia",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

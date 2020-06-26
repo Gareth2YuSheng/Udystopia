@@ -1,0 +1,143 @@
+/*ttf fonts*/
+@font-face {
+    font-family: "mohaveLight";
+    src: url("../assets/fonts/mohave/mohave.light.ttf");
+  }
+  
+  @font-face {
+    font-family: "mohaveRegular";
+    src: url("../assets/fonts/mohave/mohave.regular.ttf");
+  }
+  
+  @font-face {
+    font-family: "mohaveMedium";
+    src: url("../assets/fonts/mohave/mohave.medium.ttf");
+  }
+  
+  @font-face {
+    font-family: "mohaveBold";
+    src: url("../assets/fonts/mohave/mohave.bold.ttf");
+  }
+  
+  .main {
+    text-align: center;
+    /* margin: auto auto; */
+    /* border: 1px solid black; */
+    /* padding: 40% auto; */
+}
+
+#errortext {
+    /* position: absolute; */
+    margin-top: 30%;
+    font-size: 30px;
+}
+
+table {
+    width: 80%;
+    overflow: hidden;
+    overflow-x: scroll;
+    /* height: 100%; */
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+table, th, td {
+    /* border: 1px solid black;
+    border-collapse: collapse; */
+    text-align: center;
+}
+
+table, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.performaceSlot {
+    /* background-color: rgb(255,51,102); */
+    border: 1px solid black;
+}
+
+.emptySlot {
+    background-color: black;
+}
+
+.performaceSlotResult {
+    background-color: rgb(255,51,102);
+    border: 1px solid black;
+}
+
+/*result viewer table*/
+#resultViewer {
+  font: normal 100% "mohaveRegular";
+  border: 3px solid black;
+  border-top-left-radius: 9px;
+  border-bottom-right-radius: 15px;
+  border-collapse: separate;
+  table-layout: fixed ;
+  width: 90%;
+  margin: 0 auto;
+}
+
+#resultViewer thead tr {
+  border-right: 3px solid black;
+}
+
+#resultViewer td {
+  border: 3px solid black;
+} 
+
+#resultViewer tr:last-child td:last-child {
+  border-bottom-right-radius: 9px;
+}
+
+#checkboxSection {
+  margin: 10px 80px 0 0;
+  float: right;
+  width: 30%;
+}
+
+#checkbox {
+  --background-checked: var(--ion-color-pink);
+  --border-color-checked: var(--ion-color-pink);
+  --border-radius: 50px;
+  --size: 20px;
+}
+
+#checkboxTitle {
+  --color: blue!important;
+  font: normal 100% "mohaveRegular" !important;
+}
+
+#checkboxSection2 {
+  margin: 10px 0 0 0;
+  float: right;
+  width: 35%;
+}
+
+#checkbox2 {
+  --background-checked: var(--ion-color-pink);
+  --border-color-checked: var(--ion-color-pink);
+  --border-radius: 50px;
+  --size: 20px;
+}
+
+#checkboxTitle2 {
+  --color: green!important;
+  font: normal 100% "mohaveRegular" !important;
+}
+
+#toggleB {
+
+}
+
+#toggleBasicB {
+
+}
+
+#toggleAdvancedB {
+
+}
+
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+}

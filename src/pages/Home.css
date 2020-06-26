@@ -1,0 +1,206 @@
+/*custom ion color*/
+:root {
+  --ion-color-pink: #ff3366;
+  --ion-color-pink-rgb: 255, 51, 102;
+  --ion-color-pink-contrast: #ffffff;
+  --ion-color-pink-contrast-rgb: 255, 255, 255;
+  --ion-color-pink-shade: #e02d5a;
+  --ion-color-pink-tint: #ff4775;
+}
+
+.ion-color-pink {
+  --ion-color-base: var(--ion-color-pink);
+  --ion-color-base-rgb: var(--ion-color-pink-rgb);
+  --ion-color-contrast: var(--ion-color-pink-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-pink-contrast-rgb);
+  --ion-color-shade: var(--ion-color-pink-shade);
+  --ion-color-tint: var(--ion-color-pink-tint);
+}
+
+/*ttf fonts*/
+@font-face {
+  font-family: "mohaveLight";
+  src: url("../assets/fonts/mohave/mohave.light.ttf");
+}
+
+@font-face {
+  font-family: "mohaveRegular";
+  src: url("../assets/fonts/mohave/mohave.regular.ttf");
+}
+
+@font-face {
+  font-family: "mohaveMedium";
+  src: url("../assets/fonts/mohave/mohave.medium.ttf");
+}
+
+@font-face {
+  font-family: "mohaveBold";
+  src: url("../assets/fonts/mohave/mohave.bold.ttf");
+}
+
+
+/*app title style*/
+.appName {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font: normal 175% "mohaveBold";
+}
+
+.title {
+  margin-top: 20px;
+  text-align: center;
+  font: normal 175% "mohaveLight";
+}
+
+/*search bar style*/
+.searchBar {
+  font: normal 100% "mohaveMedium";
+  width: 50%;
+}
+
+#searchB {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#searchBox {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#searchBarA {
+  --icon-color: var(--ion-color-pink);
+  float: left;
+}
+
+#searchBarB {
+  --icon-color: var(--ion-color-pink);
+  float: right;
+}
+
+#searchBarC {
+  --icon-color: var(--ion-color-pink);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*search button style*/
+#searchButton {
+  font: normal 100% "mohaveBold";
+  width: 20%;
+  margin-bottom: 10px;
+}
+
+/*pagination style*/
+.pagination {
+  margin: 5px auto;
+  width: 50%;
+}
+
+#paginationB {
+  font: normal 100% "mohaveBold";
+}
+
+#navPage {
+  float: left;
+}
+
+#go2Page {
+  text-align: center;
+  margin: 0 auto;
+  width: 35%;
+}
+
+#rowsPPage {
+  float: right;
+  text-align: right;
+  width: 30%;
+}
+
+#goToPage {
+  list-style: none;
+  width: 100%;
+  height: 90px;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  float: right;
+}
+
+#rowsPerPage {
+  list-style: none;
+  width: 100%;
+  height: 90px;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  float: right;
+}
+
+#goToPage > li {
+  display: inline-block;
+}
+
+#rowsPerPage > li {
+  display: inline-block;
+}
+
+#ionLabel {
+  font: normal 100% "mohaveBold";
+  width: 50px;
+}
+
+#ionSelect {
+  font: normal 100% "mohaveBold";
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-right: 35px;
+  width: 60px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+#ionLabel1 {
+  font: normal 100% "mohaveBold";
+  width: 50px;
+}
+
+#ionSelect1 {
+  font: normal 100% "mohaveBold";
+  margin-left: 5px;
+  width: 60px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+#of {
+  font: normal 100% "mohaveBold";
+}
+
+#toggleB {
+
+}
+
+#toggleBasicB {
+
+}
+
+#toggleAdvancedB {
+
+}
+
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+}
