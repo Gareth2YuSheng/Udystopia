@@ -334,7 +334,7 @@ const Home: React.FC = () => {
               </li>
 
               {/*search bar for endTime*/}
-              <li>
+              {typeOfDV == 'advanced' && <li>
                 <IonSearchbar
                   inputmode="numeric"
                   id="searchBarC"
@@ -346,7 +346,7 @@ const Home: React.FC = () => {
                   show-cancel-button="never"
                   placeholder="Search endTime (e.g. 18:00)"
                 ></IonSearchbar>
-              </li>
+              </li>}
             </ul>
           </div>
 
