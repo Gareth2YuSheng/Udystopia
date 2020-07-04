@@ -11,13 +11,19 @@ import {
   IonLabel,
   IonSelect,
   IonSelectOption,
+  IonGrid, 
+  IonRow, 
+  IonCol,
+  IonSegment, 
+  IonSegmentButton,
+  IonLoading
 } from "@ionic/react";
 import "./Home.css";
 import { useTable } from "react-table";
 import styled from "styled-components";
 import {
   arrowForwardCircleOutline,
-  arrowBackCircleOutline,
+  arrowBackCircleOutline
 } from "ionicons/icons";
 
 import { NativeStorage } from  '@ionic-native/native-storage';
@@ -32,36 +38,22 @@ var timeoutDuration = 30000;
 const Styles = styled.div`
   table {
     tr {
-      font: normal 100% "mohaveRegular";
-      :last-child {
-        td {
-          :last-child {
-            border-bottom-right-radius: 10px;
-          }
-        }
-      }
+      font-family: 'Fjalla One', sans-serif;
     }
-    border-collapse: separate;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
     text-align: center;
     margin: 0px auto;
-    width: 50%;
-    border: 2px solid black;
+    width: 100%;
+    border: 3px solid black;
     th,
     td {
       padding: 5px;
-      border: 2px solid black;
-      width: 20%;
+      border: 3px solid black;
+      width: 25%;
     }
     th {
-      :first-child {
-        border-top-left-radius: 10px;
-      }
       font: normal 100% "mohaveMedium";
-      background-color: #ff3366;
+      background-color: var(--ion-color-pink);
       color: white;
-      border-bottom: 3px solid black;
     }
   }
 `;
@@ -237,6 +229,8 @@ const Home: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [selectOptions, setSelectOptions] = useState([]);
   const [typeOfDV, setTypeOfDV] = useState('basic');
+  const [segmentValue, setSegmentValue] = useState('Basic');
+  const [showLoading, setShowLoading] = useState(true);
 
   const columnsBasic = [
     {
@@ -294,114 +288,162 @@ const Home: React.FC = () => {
             <div className="appName">Udystopia</div>
           </IonToolbar>
         </IonHeader>
+
         <IonContent>
+
+          <IonLoading
+            cssClass='loading'
+            isOpen={showLoading}
+            onDidDismiss={() => setShowLoading(false)}
+            message={'Please wait...'}
+            duration={2000}
+          />
+
           {/*data table title*/}
           <IonCardHeader>
-            <div className="title">Performances Data Viewer</div>
+            <div className="title">Data Viewer</div>
           </IonCardHeader>
 
+          <div className="tableContent">
           {/*search bar*/}
-          <div id="searchB">
-            <ul id="searchBox">
-              {/*search bar for festivalId*/}
-              <li>
-                <IonSearchbar
-                  inputmode="numeric"
-                  id="searchBarA"
-                  className="searchBar"
-                  value={festivalId}
-                  onIonChange={(e) => {
-                    setFestivalId(e.detail.value!);
-                  }}
-                  show-cancel-button="never"
-                  placeholder="Search festivalId"
-                ></IonSearchbar>
-              </li>
+            <IonGrid>
+              <IonRow>
 
-              {/*search bar for startTime*/}
-              <li>
-                <IonSearchbar
-                  inputmode="numeric"
-                  id="searchBarB"
-                  className="searchBar"
-                  value={startTime}
-                  onIonChange={(e) => {
-                    setST(e.detail.value!);
-                  }}
-                  show-cancel-button="never"
-                  placeholder="Search startTime (e.g. 08:00)"
-                ></IonSearchbar>
-              </li>
+                {/*search bar for festivalId*/}
+                {typeOfDV == 'basic' &&
+                <IonCol size-xs="6">
+                  <IonSearchbar 
+                    inputmode="numeric"
+                    id="searchBarA"
+                    className="searchBar"
+                    value={festivalId}
+                    onIonChange={(e) => {
+                      setFestivalId(e.detail.value!);
+                    }}
+                    show-cancel-button="never"
+                    placeholder="Search festivalId"
+                  ></IonSearchbar>
+                </IonCol>
+                }
 
-              {/*search bar for endTime*/}
-              {typeOfDV == 'advanced' && <li>
-                <IonSearchbar
-                  inputmode="numeric"
-                  id="searchBarC"
-                  className="searchBar"
-                  value={endTime}
-                  onIonChange={(e) => {
-                    setET(e.detail.value!);
-                  }}
-                  show-cancel-button="never"
-                  placeholder="Search endTime (e.g. 18:00)"
-                ></IonSearchbar>
-              </li>}
-            </ul>
-          </div>
+                {/*search bar for startTime*/}
+                {typeOfDV == 'basic' &&
+                <IonCol size-xs="6">
+                  <IonSearchbar 
+                    inputmode="numeric"
+                    id="searchBarB"
+                    className="searchBar"
+                    value={startTime}
+                    onIonChange={(e) => {
+                      setST(e.detail.value!);
+                    }}
+                    show-cancel-button="never"
+                    placeholder="Search startTime (e.g. 08:00)"
+                  ></IonSearchbar>
+                </IonCol>
+                }
+
+                {/*search bar for festivalId*/}
+                {typeOfDV == 'advanced' &&
+                <IonCol size-md="4" size-xs="12">
+                  <IonSearchbar 
+                    inputmode="numeric"
+                    id="searchBarA"
+                    className="searchBar"
+                    value={festivalId}
+                    onIonChange={(e) => {
+                      setFestivalId(e.detail.value!);
+                    }}
+                    show-cancel-button="never"
+                    placeholder="Search festivalId"
+                  ></IonSearchbar>
+                </IonCol>
+                }
+
+                {/*search bar for startTime*/}
+                {typeOfDV == 'advanced' &&
+                <IonCol size-md="4" size-xs="6">
+                  <IonSearchbar 
+                    inputmode="numeric"
+                    id="searchBarB"
+                    className="searchBar"
+                    value={startTime}
+                    onIonChange={(e) => {
+                      setST(e.detail.value!);
+                    }}
+                    show-cancel-button="never"
+                    placeholder="Search startTime (e.g. 08:00)"
+                  ></IonSearchbar>
+                </IonCol>
+                }
+
+                  {/*search bar for endTime*/}
+                  {typeOfDV == 'advanced' &&
+                  <IonCol size-md="4" size-xs="6">
+                    <IonSearchbar
+                      inputmode="numeric"
+                      id="searchBarC"
+                      className="searchBar"
+                      value={endTime}
+                      onIonChange={(e) => {
+                        setET(e.detail.value!);
+                      }}
+                      show-cancel-button="never"
+                      placeholder="Search endTime (e.g. 18:00)"
+                    ></IonSearchbar>
+                  </IonCol>
+                  }
+              </IonRow>
+            </IonGrid>
 
           {/*search button*/}
-          <div id="searchB">
-            <IonButton
-              id="searchButton"
-              color="dark"
-              onClick={() => {
-                setPage(0);
-                if (validateSearchParams(festivalId, startTime, endTime)) {
-                  getData(
-                    typeOfDV,
-                    festivalId,
-                    startTime,
-                    endTime,
-                    0,
-                    pageSize,
-                    setError,
-                    setItems,
-                    setTotalPages,
-                    setSelectOptions,
-                    setPage,
-                    setRows
-                  );
-                  
-                }
-              }}
-            >
-              Search
-            </IonButton>
-          </div>
+          <IonButton
+            id="searchButton"
+            color="dark"
+            onClick={() => {
+              setShowLoading(true);
+              setPage(0);
+              if (validateSearchParams(festivalId, startTime, endTime)) {
+                getData(
+                  typeOfDV,
+                  festivalId,
+                  startTime,
+                  endTime,
+                  0,
+                  pageSize,
+                  setError,
+                  setItems,
+                  setTotalPages,
+                  setSelectOptions,
+                  setPage,
+                  setRows
+                );
+                
+              }
+            }}
+          >
+            Search
+          </IonButton>
 
-          {/*toggle buttons*/}
-          <div id="toggleB">
-            <button
-              id="toggleBasicB"
-              onClick={() => {
+            {/*toggle buttons*/}
+            <IonSegment className="segment" value={segmentValue}>
+              <IonSegmentButton className="segmentButton" value="Basic" onClick={() => {
+                setSegmentValue("Basic");
                 setTypeOfDV('basic');
                 getData('basic', festivalId, startTime, endTime, page, pageSize, setError, setItems, setTotalPages, setSelectOptions, setPage, setRows);
-              }}
-            >
-              Basic
-            </button>
+              }}>
+                <IonLabel>Basic</IonLabel>
+              </IonSegmentButton>
 
-            <button
-              id="toggleAdvancedB"
-              onClick={() => {
+              <IonSegmentButton className="segmentButton" value="Advanced" onClick={() => {
+                setShowLoading(true);
+                setSegmentValue("Advanced");
                 setTypeOfDV('advanced');
                 getData('advanced', festivalId, startTime, endTime, page, pageSize, setError, setItems, setTotalPages, setSelectOptions, setPage, setRows);
-              }}
-            >
-              Advanced
-            </button>
-          </div>
+              }}>
+                <IonLabel>Advanced</IonLabel>
+              </IonSegmentButton>
+            </IonSegment>
 
           {/*Basic data table*/}
           {typeOfDV == 'basic' && <Styles>
@@ -414,14 +456,17 @@ const Home: React.FC = () => {
           </Styles>}
 
           {/*pagination*/}
-          <div className="pagination">
+          <IonGrid>
+            <IonRow className="pagination">
+
             {/*previous page button*/}
-            <div id="navPage">
+            <IonCol size-md="6" size-xs="12">
               {page > 0 && (
                 <IonButton
-                  id="paginationB"
-                  color="medium"
+                  id="paginationBPrevious"
+                  color="dark"
                   onClick={() => {
+                    setShowLoading(true);
                     setPage((prevPage) => prevPage - 1);
                   }}
                 >
@@ -430,12 +475,13 @@ const Home: React.FC = () => {
                 </IonButton>
               )}
 
-              {/*next page button*/}
+            {/*next page button*/}
               {page < totalPages - 1 && (
                 <IonButton
-                  id="paginationB"
+                  id="paginationBNext"
                   color="dark"
                   onClick={() => {
+                    setShowLoading(true);
                     setPage((prevPage) => prevPage + 1);
                   }}
                 >
@@ -443,10 +489,53 @@ const Home: React.FC = () => {
                   Next Page
                 </IonButton>
               )}
-            </div>
+            </IonCol>
+
+            {/*go to page section*/}
+            <IonCol id="go2Page" size-md="3" size-xs="6">
+              <ul id="goToPage">
+                <li>
+                  <IonLabel id="ionLabel">Go to Page: </IonLabel>
+                </li>
+
+                <li>
+                  <IonSelect
+                    id="ionSelect"
+                    value={page}
+                    interface="popover"
+                    placeholder={(page + 1).toString()}
+                    onIonChange={(e) => {
+                      setShowLoading(true);
+                      setPage(e.detail.value);
+                      getData(
+                        typeOfDV,
+                        festivalId,
+                        startTime,
+                        endTime,
+                        e.detail.value,
+                        pageSize,
+                        setError,
+                        setItems,
+                        setTotalPages,
+                        setSelectOptions,
+                        setPage,
+                        setRows
+                      );
+                    }}
+                  >
+                    {selectOptions.map((option) => (
+                      <IonSelectOption key={option} value={option}>
+                        {option + 1}
+                      </IonSelectOption>
+                    ))}
+                  </IonSelect>
+                </li>
+                <li id="of">of {totalPages}</li>
+              </ul>
+            </IonCol>
 
             {/*rows per page section*/}
-            <div id="rowsPPage">
+            <IonCol id="rowsPPage" size-md="3" size-xs="6">
               <ul id="rowsPerPage">
                 <li>
                   <IonLabel id="ionLabel1">Rows per page: </IonLabel>
@@ -458,6 +547,7 @@ const Home: React.FC = () => {
                     interface="popover"
                     placeholder={(10).toString()}
                     onIonChange={(e) => {
+                      setShowLoading(true);
                       setRows(e.detail.value);
                       setPage(0);
                       getData(
@@ -495,49 +585,11 @@ const Home: React.FC = () => {
                   </IonSelect>
                 </li>
               </ul>
-            </div>
+            </IonCol>
 
-            {/*go to page section*/}
-            <div id="go2Page">
-              <ul id="goToPage">
-                <li>
-                  <IonLabel id="ionLabel">Go to Page: </IonLabel>
-                </li>
-
-                <li>
-                  <IonSelect
-                    id="ionSelect"
-                    value={page}
-                    interface="popover"
-                    placeholder={(page + 1).toString()}
-                    onIonChange={(e) => {
-                      setPage(e.detail.value);
-                      getData(
-                        typeOfDV,
-                        festivalId,
-                        startTime,
-                        endTime,
-                        e.detail.value,
-                        pageSize,
-                        setError,
-                        setItems,
-                        setTotalPages,
-                        setSelectOptions,
-                        setPage,
-                        setRows
-                      );
-                    }}
-                  >
-                    {selectOptions.map((option) => (
-                      <IonSelectOption key={option} value={option}>
-                        {option + 1}
-                      </IonSelectOption>
-                    ))}
-                  </IonSelect>
-                </li>
-                <li id="of">of {totalPages}</li>
-              </ul>
-            </div>
+            
+          </IonRow>
+          </IonGrid>
           </div>
         </IonContent>
       </IonPage>

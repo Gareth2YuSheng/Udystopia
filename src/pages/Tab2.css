@@ -1,29 +1,31 @@
 /*ttf fonts*/
 @font-face {
-    font-family: "mohaveLight";
-    src: url("../assets/fonts/mohave/mohave.light.ttf");
-  }
+  font-family: "mohaveLight";
+  src: url("../assets/fonts/mohave/mohave.light.ttf");
+}
   
-  @font-face {
-    font-family: "mohaveRegular";
-    src: url("../assets/fonts/mohave/mohave.regular.ttf");
-  }
+@font-face {
+  font-family: "mohaveRegular";
+  src: url("../assets/fonts/mohave/mohave.regular.ttf");
+}
   
-  @font-face {
-    font-family: "mohaveMedium";
-    src: url("../assets/fonts/mohave/mohave.medium.ttf");
-  }
+@font-face {
+  font-family: "mohaveMedium";
+  src: url("../assets/fonts/mohave/mohave.medium.ttf");
+}
   
-  @font-face {
-    font-family: "mohaveBold";
-    src: url("../assets/fonts/mohave/mohave.bold.ttf");
-  }
-  
-  .main {
-    text-align: center;
-    /* margin: auto auto; */
-    /* border: 1px solid black; */
-    /* padding: 40% auto; */
+@font-face {
+  font-family: "mohaveBold";
+  src: url("../assets/fonts/mohave/mohave.bold.ttf");
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.main {
+  text-align: center;
+  /* margin: auto auto; */
+  /* border: 1px solid black; */
+  /* padding: 40% auto; */
 }
 
 #errortext {
@@ -32,29 +34,10 @@
     font-size: 30px;
 }
 
-table {
-    width: 80%;
-    overflow: hidden;
-    overflow-x: scroll;
-    /* height: 100%; */
-    margin-left: 10%;
-    margin-top: 5%;
-}
-
-table, th, td {
-    /* border: 1px solid black;
-    border-collapse: collapse; */
-    text-align: center;
-}
-
-table, th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-.performaceSlot {
-    /* background-color: rgb(255,51,102); */
-    border: 1px solid black;
+#searchBar {
+  font-family: 'Fjalla One', sans-serif;
+  height: 40px;
+  --icon-color: var(--ion-color-pink);
 }
 
 .emptySlot {
@@ -62,38 +45,46 @@ table, th {
 }
 
 .performaceSlotResult {
-    background-color: rgb(255,51,102);
-    border: 1px solid black;
+  color: white;
+  background: url("../assets/png/highlight.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /*result viewer table*/
 #resultViewer {
-  font: normal 100% "mohaveRegular";
+  text-align: center;
+  font-family: 'Fjalla One', sans-serif;
   border: 3px solid black;
-  border-top-left-radius: 9px;
-  border-bottom-right-radius: 15px;
-  border-collapse: separate;
-  table-layout: fixed ;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
-#resultViewer thead tr {
-  border-right: 3px solid black;
-}
-
-#resultViewer td {
+#resultViewer th {
+  padding: 5px;
+  background-color: var(--ion-color-pink);
   border: 3px solid black;
 } 
 
-#resultViewer tr:last-child td:last-child {
-  border-bottom-right-radius: 9px;
+#resultViewer td {
+  padding: 5px;
+  border: 3px solid black;
+} 
+
+#checkboxSection ion-item, #checkboxSection1 ion-item {
+  --padding-end: 0px;
+  --inner-padding-end: 0px;
 }
 
 #checkboxSection {
-  margin: 10px 80px 0 0;
   float: right;
-  width: 30%;
+  width: auto;
+  margin-top: 26px;
+}
+
+#checkboxSection1 {
+  float: right;
+  width: auto;
 }
 
 #checkbox {
@@ -104,40 +95,44 @@ table, th {
 }
 
 #checkboxTitle {
-  --color: blue!important;
-  font: normal 100% "mohaveRegular" !important;
+  font-family: 'Fjalla One', sans-serif;
+  margin-right: 10px;
 }
 
-#checkboxSection2 {
-  margin: 10px 0 0 0;
+#popularityDesc {
+  font: normal 80% "Fjalla One" !important;
+  margin-top: 10px;
+}
+
+#popularityCount {
+  font-family: 'Fjalla One', sans-serif;
+  clear: right;
   float: right;
-  width: 35%;
+  margin-top: 10px;
 }
 
-#checkbox2 {
-  --background-checked: var(--ion-color-pink);
-  --border-color-checked: var(--ion-color-pink);
-  --border-radius: 50px;
-  --size: 20px;
-}
-
-#checkboxTitle2 {
-  --color: green!important;
-  font: normal 100% "mohaveRegular" !important;
-}
-
-#toggleB {
-
-}
-
-#toggleBasicB {
-
-}
-
-#toggleAdvancedB {
-
-}
-
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   /* CSS that should be displayed if width is equal to or less than 800px goes here */
+  #checkbox {
+    --size: 15px;
+  }
+
+  #checkboxSection {
+    margin-top: 17px;
+  }
+
+  #checkboxTitle {
+    font: normal 80% "Fjalla One" !important;
+  }
+
+  #popularityDesc {
+    font: normal 60% "Fjalla One" !important;
+    margin-top: 5px;
+  }
+
+  #popularityCount {
+    font: normal 80% "Fjalla One" !important;
+    margin-top: 0px;
+  }
+  
 }

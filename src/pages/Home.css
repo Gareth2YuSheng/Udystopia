@@ -38,6 +38,11 @@
   src: url("../assets/fonts/mohave/mohave.bold.ttf");
 }
 
+/*loading style*/
+.loading {
+  font-family: 'Fjalla One', sans-serif;
+  --spinner-color: var(--ion-color-pink);
+}
 
 /*app title style*/
 .appName {
@@ -51,102 +56,106 @@
 }
 
 .title {
-  margin-top: 20px;
   text-align: center;
-  font: normal 175% "mohaveLight";
+  font: normal 150% "mohaveLight";
 }
 
 /*search bar style*/
 .searchBar {
-  font: normal 100% "mohaveMedium";
-  width: 50%;
-}
-
-#searchB {
-  text-align: center;
-  width: 50%;
-  margin: 0 auto;
-}
-
-#searchBox {
-  list-style: none;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 #searchBarA {
+  height: 40px;
   --icon-color: var(--ion-color-pink);
-  float: left;
+  padding-right: 10px;
 }
 
 #searchBarB {
+  height: 40px;
+  padding: 0px;
   --icon-color: var(--ion-color-pink);
-  float: right;
 }
 
 #searchBarC {
+  height: 40px;
   --icon-color: var(--ion-color-pink);
-  margin: 0 auto;
-  text-align: center;
+  padding-left: 10px;
+}
+
+/*ion grid style*/
+.md .hydrated {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 /*search button style*/
 #searchButton {
-  font: normal 100% "mohaveBold";
-  width: 20%;
-  margin-bottom: 10px;
+  font-family: 'Fjalla One', sans-serif;
+  display: block;
+  width: 150px;
+  margin: 0 auto 10px auto;
+  height: 35px;
+  min-height: 35px;
+}
+
+/*segment button style*/
+.segment {
+  width: 50%;
+}
+
+.segmentButton {
+  font-family: 'Fjalla One', sans-serif;
+  text-align: center;
+  margin-bottom: 5px;
+  height: 35px;
+  min-height: 35px;
+  --background: rgba(232, 232, 232, 1);
+  --border-radius: 5px;
+  --background-checked: black;
+  --color-checked: white;
+  --indicator-color: var(--ion-color-pink);
+  --indicator-height: 3px;
+}
+
+.tableContent {
+  width: 80%;
+  margin: auto;
 }
 
 /*pagination style*/
 .pagination {
-  margin: 5px auto;
-  width: 50%;
+  margin-top: 5px;
+  width: 100%;
 }
 
-#paginationB {
-  font: normal 100% "mohaveBold";
+#paginationBPrevious {
+  font-family: 'Fjalla One', sans-serif;
+  margin: 0px 5px 0px 0px;
 }
 
-#navPage {
-  float: left;
+#paginationBNext {
+  font-family: 'Fjalla One', sans-serif;
+  margin: 0px;
+  margin-right: 0px;
 }
 
 #go2Page {
-  text-align: center;
-  margin: 0 auto;
-  width: 35%;
+  text-align: right;
 }
 
 #rowsPPage {
-  float: right;
   text-align: right;
-  width: 30%;
 }
 
 #goToPage {
-  list-style: none;
-  width: 100%;
-  height: 90px;
   margin: 0;
   padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  float: right;
 }
 
 #rowsPerPage {
-  list-style: none;
-  width: 100%;
-  height: 90px;
   margin: 0;
   padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  float: right;
 }
 
 #goToPage > li {
@@ -158,49 +167,91 @@
 }
 
 #ionLabel {
-  font: normal 100% "mohaveBold";
+  font-family: 'Fjalla One', sans-serif;
   width: 50px;
 }
 
 #ionSelect {
-  font: normal 100% "mohaveBold";
+  font-family: 'Fjalla One', sans-serif;
+  color: white;
   margin-left: 5px;
   margin-right: 5px;
-  padding-right: 35px;
-  width: 60px;
-  border: 3px solid black;
-  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 50px;
+  background-color: black;
+  border-radius: 5px;
+  text-align: right;
+}
+
+ion-select::part(icon) {
+  color: white;
+  opacity: 0.6;
 }
 
 #ionLabel1 {
-  font: normal 100% "mohaveBold";
+  font-family: 'Fjalla One', sans-serif;
   width: 50px;
+  margin-right: 0px !important;
 }
 
 #ionSelect1 {
-  font: normal 100% "mohaveBold";
+  font-family: 'Fjalla One', sans-serif;
+  color: white;
   margin-left: 5px;
-  width: 60px;
-  border: 3px solid black;
-  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 50px;
+  background-color: black;
+  border-radius: 5px;
 }
 
 #of {
-  font: normal 100% "mohaveBold";
+  font-family: 'Fjalla One', sans-serif;
 }
 
-#toggleB {
-
-}
-
-#toggleBasicB {
-
-}
-
-#toggleAdvancedB {
-
-}
-
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   /* CSS that should be displayed if width is equal to or less than 800px goes here */
+  .segmentButton {
+    margin-top: 10px;
+  }
+  
+  .tableContent {
+    width: 90%;
+  }
+  
+  table tr {
+    font: normal 80% "Fjalla One" !important;
+  }
+
+  ion-card-header {
+    padding-bottom: 0px;
+  }
+
+  #searchBarA {
+    height: 40px;
+    --icon-color: var(--ion-color-pink);
+    padding-right: 0px;
+  }
+
+  .searchbar-input {
+    font-size: 10px !important;
+  }
+  
+  .searchbar-input.sc-ion-searchbar-md {
+    padding-inline-start: 30px;
+    padding-inline-end: 0px;
+  }
+
+  .searchbar-search-icon.sc-ion-searchbar-md {
+    left: 7px;
+  }
+  
+  #paginationBNext {
+    float: right;
+  }
+
+  #go2Page {
+    text-align: left;
+  }
 }

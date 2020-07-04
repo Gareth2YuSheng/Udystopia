@@ -1,5 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonSearchbar, IonItem, IonLabel, IonCheckbox } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonToolbar,
+  IonButton,
+  IonCardHeader,
+  IonSearchbar,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonIcon,
+  IonLabel,
+  IonItem,
+  IonCheckbox,
+  IonSegment,
+  IonSegmentButton,
+  IonLoading
+} from "@ionic/react";
 import './Tab2.css';
 import { NativeStorage } from  '@ionic-native/native-storage';
 import { isPlatform } from '@ionic/react';
@@ -232,11 +250,12 @@ const Tab2: React.FC = () => {
   const [performances, setPerformances] = useState([]);
   const [totalPopularity, setTotalPopularity] = useState(0);
   const [typeOfRV, setTypeOfRV] = useState('basic');
+  const [segmentValue, setSegmentValue] = useState('Basic');
+  const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
       
   }, []);
-
 
       return (
         <IonPage>
@@ -247,49 +266,75 @@ const Tab2: React.FC = () => {
           </IonHeader>
     
           <IonContent>
-            <h1>Schedule</h1>
-            <IonSearchbar id="searchBarC" className="searchBar" value={festivalId} onIonChange={e => {setFestivalId(e.detail.value!);}} show-cancel-button="never" placeholder="Search festivalId"></IonSearchbar>
+            {/*data table title*/}
+            <IonCardHeader>
+              <div className="title">Result Viewer</div>
+            </IonCardHeader>
+
+            <div className="tableContent">
+            {/*search bar*/}
+            <IonGrid>
+              <IonRow>
+                <IonCol>
+                  {/*search bar for festivalId*/}
+                  <IonSearchbar 
+                    id="searchBar" 
+                    value={festivalId} 
+                    onIonChange={e => {setFestivalId(e.detail.value!);}} 
+                    show-cancel-button="never" 
+                    placeholder="Search festivalId">
+                  </IonSearchbar>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
             
-            <div id="searchB">
             <IonButton id="searchButton" color="dark" onClick={()=>{
               if (validation(festivalId)) {
+                setShowLoading(true);
                 populateSchedule(typeOfRV,festivalId,setError,setTableHeader,setTableData,setPerformances);
                 setChecked(false);
                 setChecked2(false);
               }
-              
             }}>Search</IonButton>
-
-            </div>
+            
+            <IonLoading
+              cssClass='loading'
+              isOpen={showLoading}
+              onDidDismiss={() => setShowLoading(false)}
+              message={'Please wait...'}
+              duration={2500}
+            />
 
             {/*toggle buttons*/}
-            <div id="toggleB">
-              <button
-                id="toggleBasicB"
+            {tableData.length>0 &&
+            <IonSegment className="segment" value={segmentValue}>
+              <IonSegmentButton 
+                className="segmentButton" 
+                value="Basic" 
                 onClick={() => {
+                  setShowLoading(true);
+                  setSegmentValue("Basic");
                   setTypeOfRV('basic');
                   if (festivalId) populateSchedule('basic',festivalId,setError,setTableHeader,setTableData,setPerformances);
                   if (checked2) setChecked2(false);
                 }}
               >
-                Basic
-              </button>
+                <IonLabel>Basic</IonLabel>
+              </IonSegmentButton>
 
-              <button
-                id="toggleAdvancedB"
-                onClick={() => {
-                  setTypeOfRV('advanced');
+              <IonSegmentButton className="segmentButton" value="Advanced" onClick={() => {
+                setShowLoading(true);
+                setSegmentValue("Advanced");
+                setTypeOfRV('advanced');
                   if (festivalId) populateSchedule('advanced',festivalId,setError,setTableHeader,setTableData,setPerformances);
                   if (checked) setChecked(false);
                 }}
               >
-                Advanced
-              </button>
-            </div>
+                <IonLabel>Advanced</IonLabel>
+              </IonSegmentButton>
+            </IonSegment>}
 
-
-          <IonLabel id=""><b>Schedule for festivalId = '{festivalId}'</b></IonLabel>
-
+            {/*Result table*/}
             <table id="resultViewer">
               <thead>
                 <tr>
@@ -306,9 +351,13 @@ const Tab2: React.FC = () => {
   
               </tbody>
             </table>
-            {tableData.length>0 && typeOfRV == 'basic' && <div id="checkboxSection">
-              <IonItem lines="none">
-                <IonLabel id="checkboxTitle">Show Me The Most Performances I Can Watch</IonLabel>
+
+            {/*Basic Result Checkbox*/}
+            {tableData.length>0 && typeOfRV == 'basic' && 
+            <div id="checkboxSection">
+              <IonItem lines="none" class="ion-no-padding">
+                <div id="checkboxTitle">Show Me The Most Performances I Can Watch</div>
+                <IonLabel></IonLabel>
                 <IonCheckbox id="checkbox" checked={checked} onIonChange={e => setChecked(e.detail.checked)} onClick={()=>{
                   if (checked && validation(festivalId) && tableHeader.length > 0) {
                     if (checked2) {
@@ -322,10 +371,21 @@ const Tab2: React.FC = () => {
               </IonItem>
             </div>}
 
-            {tableData.length>0 && typeOfRV == 'advanced' && <div id="checkboxSection2">
+                
+            {/*Popularity Description*/}
+            {typeOfRV == 'advanced' && 
+              <div id="popularityDesc">
+                *Number inside brackets is popularity of particular performance
+              </div>
+            }
+
+            {/*Advanced Result Checkbox*/}
+            {tableData.length>0 && typeOfRV == 'advanced' && 
+              <div id="checkboxSection1">
               <IonItem lines="none">
-                <IonLabel id="checkboxTitle2">Show Me The Most <b>Popular</b> Performances I Can Watch</IonLabel>
-                <IonCheckbox id="checkbox2" checked={checked2} onIonChange={e => setChecked2(e.detail.checked)} onClick={()=>{
+                <div id="checkboxTitle">Show Me The Most <b>Popular</b> Performances I Can Watch</div>
+                <IonLabel></IonLabel>
+                <IonCheckbox id="checkbox" checked={checked2} onIonChange={e => setChecked2(e.detail.checked)} onClick={()=>{
                   if (checked2 && validation(festivalId) && tableHeader.length > 0) {
                     if (checked) {
                       setChecked(false);
@@ -336,19 +396,15 @@ const Tab2: React.FC = () => {
                   }
                   }}></IonCheckbox>
               </IonItem>
-            </div>}
+              </div>
+              }
+              
+              {tableData.length>0 && typeOfRV == 'advanced' && checked2 && 
+                <IonLabel id="popularityCount"><b>Total Popularity: {totalPopularity}</b></IonLabel>
+              }
+              
 
-            {typeOfRV == 'advanced' && <IonItem lines="none">
-              <IonLabel id="">*Number inside brackets is popularity of particular performance</IonLabel>
-            </IonItem>}
-
-            {checked2 && <div id="">
-              <IonItem lines="none">
-                <IonLabel id=""><b>Total Popularity: {totalPopularity}</b></IonLabel>
-              </IonItem>
-            </div>}
-
-
+            </div>
           </IonContent>
         </IonPage>
       );
