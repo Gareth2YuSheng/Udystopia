@@ -102,11 +102,11 @@
 /*segment button style*/
 .segment {
   width: 50%;
+  float: left;
 }
 
 .segmentButton {
   font-family: 'Fjalla One', sans-serif;
-  text-align: center;
   margin-bottom: 5px;
   height: 35px;
   min-height: 35px;
@@ -253,5 +253,11 @@ ion-select::part(icon) {
 
   #go2Page {
     text-align: left;
+  }
+}
+
+@media (min-width: 1920px) {
+  .segment {
+    width: 30%;
   }
 }

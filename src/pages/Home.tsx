@@ -48,7 +48,7 @@ const Styles = styled.div`
     td {
       padding: 5px;
       border: 3px solid black;
-      width: 25%;
+      width: 20%;
     }
     th {
       font: normal 100% "mohaveMedium";
