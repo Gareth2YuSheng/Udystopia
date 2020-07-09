@@ -3,7 +3,6 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, IonIcon, IonLabel, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
-// import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import './App.css';
 import {homeOutline,calendarOutline} from 'ionicons/icons';
@@ -32,20 +31,15 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          {/* <Route path="/tab1" component={Tab1} exact={true} /> */}
           <Route path="/schedule" component={Tab2} exact={true} />
           <Route path="/home" component={Home} exact={true} />
-          <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
+          <Route path="/Udystopia" render={() => <Redirect to="/home" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
         <IonTabButton tab="home" href="/home">
             <IonIcon className={'tabIcon'} icon={homeOutline} />
             <IonLabel class="tabLabel">Home</IonLabel>
           </IonTabButton>
-          {/* <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel class="tabLabel">Hello 1</IonLabel>
-          </IonTabButton> */}
           <IonTabButton tab="schedule" href="/schedule">
             <IonIcon className={'tabIcon'} icon={calendarOutline} />
             <IonLabel class="tabLabel">Schedule</IonLabel>
