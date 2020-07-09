@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "aa33c72c09bb68fbbd9f5fdb7375fd6c",
+    "revision": "0f5ff367ba5d894dfd17827b9032419d",
     "url": "/Udystopia/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Udystopia/static/css/12.c924c7f9.chunk.css"
   },
   {
-    "revision": "e6ce4864dd34b1a0c7ea",
+    "revision": "a232987b7a9cdc6a1540",
     "url": "/Udystopia/static/css/main.89302a17.chunk.css"
   },
   {
@@ -388,8 +388,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Udystopia/static/js/94.833809c5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e6ce4864dd34b1a0c7ea",
-    "url": "/Udystopia/static/js/main.4a48dda4.chunk.js"
+    "revision": "a232987b7a9cdc6a1540",
+    "url": "/Udystopia/static/js/main.73b723d2.chunk.js"
   },
   {
     "revision": "cf37cecc83b46a09f2a1",
