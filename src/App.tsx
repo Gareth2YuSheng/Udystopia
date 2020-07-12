@@ -33,7 +33,7 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/Udystopia/schedule" component={Tab2} exact={true} />
           <Route path="/Udystopia/home" component={Home} exact={true} />
-          <Route path="/Udystopia" render={() => <Redirect to="/home" />} exact={true} />
+          <Route path="/Udystopia" render={() => <Redirect to="/Udystopia/home" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
         <IonTabButton tab="home" href="/Udystopia/home">
