@@ -31,16 +31,16 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/schedule" component={Tab2} exact={true} />
-          <Route path="/home" component={Home} exact={true} />
+          <Route path="/Udystopia/schedule" component={Tab2} exact={true} />
+          <Route path="/Udystopia/home" component={Home} exact={true} />
           <Route path="/Udystopia" render={() => <Redirect to="/home" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-        <IonTabButton tab="home" href="/home">
+        <IonTabButton tab="home" href="/Udystopia/home">
             <IonIcon className={'tabIcon'} icon={homeOutline} />
             <IonLabel class="tabLabel">Home</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="schedule" href="/schedule">
+          <IonTabButton tab="schedule" href="/Udystopia/schedule">
             <IonIcon className={'tabIcon'} icon={calendarOutline} />
             <IonLabel class="tabLabel">Schedule</IonLabel>
           </IonTabButton>
