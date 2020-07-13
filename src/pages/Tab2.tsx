@@ -231,7 +231,7 @@ function populateResultTable(type, festivalId, setError, setTableData, headers, 
 
 
 function validation(festivalId) {
-  if (!(/^\d+$/.test(festivalId))) {
+  if (!(/^\d+$/.test(festivalId))  || festivalId.length < 10) {
     return false;
   } 
   return true;

@@ -184,7 +184,7 @@ function getData(type, festivalId, startTime, endTime, page, pageSize, setError,
 //handle filter search funtion
 function validateSearchParams(festivalId, startTime, endTime) {
   if (festivalId) {
-    if (!(/^\d+$/.test(festivalId))) {
+    if (!(/^\d+$/.test(festivalId))  || festivalId.length < 10) {
       return false;
     }
   }
