@@ -265,7 +265,7 @@ const Tab2: React.FC = () => {
             </IonToolbar>
           </IonHeader>
     
-          <IonContent>
+          <IonContent scroll-x="true">
             {/*data table title*/}
             <IonCardHeader>
               <div className="title">Result Viewer</div>
