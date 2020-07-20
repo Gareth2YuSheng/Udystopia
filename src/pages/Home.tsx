@@ -103,7 +103,7 @@ function Table({ columns, data }) {
 //get data for data table & pagination function
 function getData(type, festivalId, startTime, endTime, page, pageSize, setError, setItems, setTotalPages, setSelectOptions, setPage, setRows) {
   // var url = host_addr+"basic/data?";
-  var url = (type == 'basic') ? host_addr+"basic/data?" : host_addr+"advanced/data?";
+  var url = (type == 'basic') ? host_addr+"basic/data?" : host_addr+"advance/data?";
 
   if (festivalId) {
     url += "festivalId=" + festivalId + "&";
@@ -184,7 +184,7 @@ function getData(type, festivalId, startTime, endTime, page, pageSize, setError,
 //handle filter search funtion
 function validateSearchParams(festivalId, startTime, endTime) {
   if (festivalId) {
-    if (!(/^\d+$/.test(festivalId))  || festivalId.length < 10) {
+    if (!(/^\d+$/.test(festivalId)) || festivalId.length < 10) {
       return false;
     }
   }
@@ -586,8 +586,6 @@ const Home: React.FC = () => {
                 </li>
               </ul>
             </IonCol>
-
-            
           </IonRow>
           </IonGrid>
           </div>

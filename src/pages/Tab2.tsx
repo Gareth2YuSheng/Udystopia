@@ -36,7 +36,7 @@ function fillInRowsResult (data, setTableData, setTotalPopularity=null) {
   var schedule = data.result;
   var schedulePerformanceIDs = [];
   for (var x in schedule) {
-    schedulePerformanceIDs.push(schedule[x].performanceid);
+    schedulePerformanceIDs.push(schedule[x].performanceId);
   }
   var addingSlot;
   var rows = [];
@@ -65,7 +65,7 @@ function fillInRowsResult (data, setTableData, setTotalPopularity=null) {
     row = []
     for (var h=0;h<headers.length-slotsNeeded+1;h++) { 
       if (headers[h].substr(0,8) == performance.starttime) {
-        if (schedulePerformanceIDs.includes(performance.performanceid)) {   
+        if (schedulePerformanceIDs.includes(parseInt(performance.performanceid))) {   
           if (performance.popularity) {
             row.push(<td key={keyCount++} className={'performaceSlotResult'} colSpan={slotsNeeded} >{performance.performanceid} ({performance.popularity})</td>);
             totalPopularity += performance.popularity;
@@ -105,8 +105,7 @@ function cache(url, performances, headers, result) {
 
 
 function populateSchedule(type, festivalId, setError, setTableHeader, setTableData, setPerformances) {
-  // var url = host_addr+"advanced/result/festival/startEnd?festivalId="+festivalId;
-  var url = (type == 'basic') ? host_addr+"basic/result/festival/startEnd?festivalId="+festivalId : host_addr+"advanced/result/festival/startEnd?festivalId="+festivalId;
+  var url = (type == 'basic') ? host_addr+"basic/result/festival/startEnd?festivalId="+festivalId : host_addr+"advance/result/festival/startEnd?festivalId="+festivalId;
 
   const controller = new AbortController();
   const signal = controller.signal;
@@ -181,7 +180,7 @@ function populateSchedule(type, festivalId, setError, setTableHeader, setTableDa
 
 function populateResultTable(type, festivalId, setError, setTableData, headers, performances, setTableHeader, setPerformances, setTotalPopularity=null) {
   // var url = host_addr+"basic/result?festivalId="+festivalId;
-  var url = (type == 'basic') ? host_addr+"basic/result?festivalId="+festivalId : host_addr+"advanced/result?festivalId="+festivalId;
+  var url = (type == 'basic') ? host_addr+"basic/result?festivalId="+festivalId : host_addr+"advance/result?festivalId="+festivalId;
 
   const controller = new AbortController();
   const signal = controller.signal;
@@ -206,7 +205,6 @@ function populateResultTable(type, festivalId, setError, setTableData, headers, 
           result: result.result
         }
 
-        
         fillInRowsResult(data, setTableData, setTotalPopularity);
 
         cache(url, performances, headers, result.result);
@@ -231,7 +229,7 @@ function populateResultTable(type, festivalId, setError, setTableData, headers, 
 
 
 function validation(festivalId) {
-  if (!(/^\d+$/.test(festivalId))  || festivalId.length < 10) {
+  if (!(/^\d+$/.test(festivalId)) || festivalId.length < 10) {
     return false;
   } 
   return true;
