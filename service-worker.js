@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Udystopia/precache-manifest.dfb915d6fefc1ba9ddc87a6b36f751cf.js"
+  "/Udystopia/precache-manifest.a29b0895a717f7efb7288329ed1ae7f0.js"
 );
 
 self.addEventListener('message', (event) => {
